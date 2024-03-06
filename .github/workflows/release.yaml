@@ -42,7 +42,11 @@ jobs:
       #   uses: golangci/golangci-lint-action@v3
 
       - name: Run tests
-        run: go test ./...
+        uses: koenhagen/measure-energy-action@v0.33
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: go test ./...
+          count: 1
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v3
